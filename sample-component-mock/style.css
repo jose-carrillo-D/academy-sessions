@@ -1,0 +1,269 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans';
+    font-weight:300;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+:root{
+    --bg-color: #1C1A1F;
+    --gray-01: #363732;
+    --secondary-text-color: #a9a9a9;
+    --third-text-color: #ccc;
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    padding: 30px;
+}
+
+body .body-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1160px;
+}
+
+body .body-container a{
+    padding: 10px 30px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    display: inline-block;
+    font-weight:500;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body .body-container a.secondary{
+    padding: 15px 20px;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+body .body-container a:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+body header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+body header p{
+    line-height: 25px;
+    font-weight: 500;
+}
+
+body header p span{
+    display: block;
+    color: var(--secondary-text-color);
+}
+
+body header .info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+body header .info h1{
+    font-weight: 300;
+    font-size: 40px;
+    color: var(--secondary-text-color);
+}
+
+body header .info h1 span{
+    font-size: 40px;
+    font-weight: 500;
+}
+
+body header aside{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+body header aside p{
+    color: var(--secondary-text-color);
+}
+    
+
+body .card-container{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 20px;
+    transition: 0.2s;
+}
+
+body .card-container .card{
+    height: 550px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+body .card-container .card:not(.open){
+    cursor: pointer;
+}
+
+body .card-container .card img{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.2s;
+}
+
+body .card-container .card:hover img{
+    transform: scale(1.1);
+}
+
+body .card-container .card .content{
+    position: relative;
+    height: 100%;
+    padding: 25px;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+body .card-container .card:not(.open) .content{
+    justify-content: flex-end;
+}
+
+body .card-container .card .content .top{
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    justify-content: right;
+    animation: fadeInRight 0.3s linear;
+}
+
+body .card-container .card:not(.open) .content .top{
+    display: none;
+    animation: none;
+}
+
+body .card-container .card .content .bottom{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+body .card-container .card .content .bottom .info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeInBottom 0.3s linear;
+}
+
+body .card-container .card:not(.open) .content .bottom .info{
+    animation: none;
+}
+
+body .card-container .card .content .bottom .info h3{
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+body .card-container .card .content .bottom .info p{
+    line-height: 24px;
+    font-weight: 500;
+    color: var(--third-text-color);
+}
+
+body .card-container .card:not(.open) .content .bottom .info p{
+    display: none;
+    animation: none;
+}
+
+body .card-container .card .content .bottom a{
+    width: 100%;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 15px 25px;
+}
+
+body .card-container .card.open .content .bottom a, a:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+@media (max-width: 1100px) {
+    body .card-container {
+        grid-template-columns: 1fr !important;
+    }
+
+    body .card-container .card:not(.open) .content {
+        justify-content: space-between;
+    }
+
+    body .card-container .card:not(.open) .content .top{
+        display: initial;
+        animation: initial;
+        justify-content: right;
+    }
+
+    body .card-container .card:not(.open) .content .bottom .info{
+        animation: initial;
+    }
+
+    body .card-container .card:not(.open) .content .bottom .info p{
+        display: initial;
+        animation: initial;
+    }
+}
+
+
+/*Animations*/
+@keyframes fadeInBottom {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeInRight {
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
