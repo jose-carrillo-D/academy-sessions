@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Nunito Sans';
+    font-weight:300;
+    font-size: 16px;
+    text-decoration: none;
+    color: #fff;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none; /* Standard syntax */
+}
+
+:root{
+    --bg-color: #1C1A1F;
+    --gray-01: #363732;
+    --secondary-text-color: #a9a9a9;
+    --third-text-color: #ccc;
+    --translation-c: 400px;
+    --slider-width: 1160px;
+    --slider-height: 500px;
+    --slider-color: var(--bg-color);
+    --slider-center: calc(var(--slider-width) / 2);
+}
+
+body{
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--bg-color);
+    padding: 30px;
+    overflow-x: hidden;
+}
+
+body .body-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 1160px;
+}
+
+body .body-container a{
+    padding: 10px 30px;
+    border: 1px solid #fff;
+    border-radius: 100px;
+    display: inline-block;
+    font-weight:500;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body .body-container a.secondary{
+    padding: 15px 20px;
+    background-color: transparent;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+body .body-container a:hover{
+    color: #000;
+    background-color: #fff;
+}
+
+body header{
+    width: 100%;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 10px;
+}
+
+body header p{
+    line-height: 25px;
+    font-weight: 500;
+}
+
+body header p span{
+    display: block;
+    color: var(--secondary-text-color);
+}
+
+body header .info{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+body header .info h1{
+    font-weight: 300;
+    font-size: 40px;
+    color: var(--secondary-text-color);
+}
+
+body header .info h1 span{
+    font-size: 40px;
+    font-weight: 500;
+}
+
+body header aside{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+body header aside p{
+    color: var(--secondary-text-color);
+}
+
+body .slider-container{
+    width: var(--slider-width);
+    height: var(--slider-height);
+    position: relative;
+    /*overflow: hidden;*/
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+body .slider-container .slider-data{
+    bottom: calc(var(--slider-center) / 2);
+    position: relative;
+    z-index: 1;
+    width: var(--slider-center);
+    height: var(--slider-center);
+    border-radius: 100%;
+    display: flex;
+    align-items: flex-end;
+    padding: 50px 125px;
+    justify-content: center;
+    text-align: center;
+    background: var(--slider-color);
+}
+
+body .slider-container .slider-data li{
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+body .slider-container .slider-data li.active{
+    opacity: 1;
+    display: flex;
+    animation: fadeInTop 0.4s ease-in-out;
+}
+
+body .slider-container .slider-data li.hide{
+    opacity: 0;
+    display: flex;
+    animation: fadeOutTop 0.4s linear;
+}
+
+body .slider-container .slider-data li h3{
+    font-size: 32px;
+    text-transform: uppercase;
+    font-weight: 800;
+}
+
+body .slider-container .slider-data li hr{
+    width: 35px;
+    border: 1px solid rgba(185, 185, 185, 0.545);
+}
+
+body .slider-container .slider-data li p{
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+
+body .slider-container .slider-body{
+    width: var(--slider-width);
+    height: var(--slider-width);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: rotate(135deg);
+    position: absolute;
+    transition: 0.4s;
+}
+
+body .slider-container .slider-body ul{
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 40px;
+    overflow: hidden;
+}
+
+body .slider-container .slider-body ul li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 100%;
+    height: 100%;
+    transform-origin: 0% 100%;
+    overflow: hidden;
+    border: 4px solid var(--slider-color);
+}
+
+body .slider-container .slider-body ul li img{
+    position: absolute;
+    left: -14%;
+    bottom: 4%;
+    width: 74%;
+    height: 38%;
+    transform: rotate(-135deg) skewY(0deg);
+    object-fit: cover;
+    opacity: 0.3;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+body .slider-container .slider-body ul li.active img{
+    opacity: 1;
+    cursor: default;
+}
+
+/*Position each image in place CSS*/
+
+body .slider-container .slider-body ul li:nth-child(1){
+    transform: rotate(0deg) skewY(-0deg);
+}
+
+body .slider-container .slider-body ul li:nth-child(2){
+    transform: rotate(90deg) skewY(-0deg);
+}
+
+body .slider-container .slider-body ul li:nth-child(3){
+    transform: rotate(180deg) skewY(-0deg);
+}
+
+body .slider-container .slider-body ul li:nth-child(4){
+    transform: rotate(270deg) skewY(-0deg);
+}
+
+/*Fade animations*/
+body .slider-container .slider-data.prev{
+    animation: rotateLeft 0.4s ease-in-out;
+}
+
+body .slider-container .slider-data.next{
+    animation: rotateRight 0.4s ease-in-out;
+}
+
+/*Animations*/
+@keyframes fadeInTop{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@keyframes fadeOutTop{
+    0%{
+        opacity: 1;
+    }
+    90%{
+        opacity: 1;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+
+@keyframes rotateLeft{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(-90deg);
+    }
+}
+
+@keyframes rotateRight{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(90deg);
+    }
+}

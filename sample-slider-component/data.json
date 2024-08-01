@@ -1,0 +1,92 @@
+[
+    {
+        "title" : "Photography",
+        "content" : "Why you should hire a professional videographer?",
+        "img" : "./img/1.jpg",
+        "button" : {
+            "label" : "Know the answer",
+            "src": "https://www.mediandesigns.com/why-you-should-hire-a-professional-videographer/"
+        }
+    },
+    {
+        "title" : "The white desert",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/2.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/2.jpg"
+        }
+    },
+    {
+        "title" : "Feel the forest",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/3.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/3.jpg"
+        }
+    },
+    {
+        "title": "Nothing like the river",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/4.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/4.jpg"
+        }
+    },
+    {
+        "title" : "The great sabanha",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/5.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/5.jpg"
+        }
+    },
+    {
+        "title" : "Where boats belong",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/6.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/6.jpg"
+        }
+    },
+    {
+        "title" : "The empty sea",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/7.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/7.jpg"
+        }
+    },
+    {
+        "title" : "The highest place on earth",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/8.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/8.jpg"
+        }
+    },
+    {
+        "title" : "The great mountain",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/9.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/9.jpg"
+        }
+    },
+    {
+        "title" : "The island",
+        "content" : "Di ammet emmet dolor sit",
+        "img" : "./img/10.jpg",
+        "button" : {
+            "label" : "View more",
+            "src" : "./img/10.jpg"
+        }
+    }
+]
