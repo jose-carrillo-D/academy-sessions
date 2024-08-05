@@ -2,15 +2,19 @@
 
 window.addEventListener("load", async () => {
 
-    const data = await (await fetch('data.json')).json();    
+    //--Global variables
+    const head = document.querySelector("head");
     const slider = document.querySelector(".slider-body");
     const infoSlides = document.querySelectorAll(".slider-data li");
     const imgSlides = slider.querySelectorAll("li");
     let currentRotation = 135;
     let blockClick = false;
     let prevClick = 0;
+
+    //--Fetch data
+    const data = await fetchData('data.json');
     
-    //Load info slides
+    //--Load info slides
     infoSlides.forEach((slide, i) => {
         const index = (i != 3) ? i : data.length-1;
         setSlideInfoHTML({
@@ -36,6 +40,7 @@ window.addEventListener("load", async () => {
     function imgSlidesClickEvent(slide){
         const clicked = slide.getAttribute("data-info");
         if(!blockClick && prevClick != clicked){
+            //Block click during animation && prevent click on the active slide
             blockClick = true;
             prevClick = clicked;
             //Add fade out animations
@@ -46,10 +51,8 @@ window.addEventListener("load", async () => {
             rotateSlide(slide);
             //Handle css classes updates
             updateCSSclasses(slide);
-            setTimeout(()=> {
-                //Display slide data
-                displaySlideData(slide);
-            } , 400);
+            //Display slide data && fadeOut animate text
+            setTimeout(() => displaySlideData(slide) , 500);
         }
     }
 
@@ -58,11 +61,15 @@ window.addEventListener("load", async () => {
         const infoContainer = info.parentElement;
         const currentInfo = infoContainer.querySelector(".active");
         const action = slide.className;
-        currentInfo.classList.add("hide");
+
         infoContainer.classList.add(action);
+
+        setTimeout(()=>{
+            currentInfo.classList.add("hide");
+        },400);
         setTimeout(()=>{
             infoContainer.classList.remove(action);
-        },400);
+        },580);
     }
     
     function loadInfiniteSlide(slide){
@@ -128,17 +135,19 @@ window.addEventListener("load", async () => {
         //Get current css classes
         const next = slide.getAttribute("data-next");
         const prev = slide.getAttribute("data-prev");
-        //Reset CSS classes
-        imgSlides.forEach(slide => slide.className = "hidden");
-        //Update CSS classes
-        setTimeout(()=>{
-            slide.className = "active";
+        setTimeout(() => {
+            //Reset CSS classes
+            imgSlides.forEach(slide => slide.className = "hidden");
+            //Update CSS classes
             setTimeout(()=>{
-                blockClick = false;
-            },200);
-        },600);
-        imgSlides[next].className = "next";
-        imgSlides[prev].className = "prev";
+                slide.className = "active";
+                setTimeout(()=>{
+                    blockClick = false;
+                },200);
+            },600);
+            imgSlides[next].className = "next";
+            imgSlides[prev].className = "prev";
+        },300);
     }
     
     function displaySlideData(slide){
@@ -159,6 +168,25 @@ window.addEventListener("load", async () => {
                 return currentRotation + step;
         }
         return currentRotation;
+    }
+
+    async function fetchData(dataUrl){
+        const data = await (await fetch(dataUrl)).json(); 
+        //Prefetch images
+        data.forEach(({img}) => {
+            const link = createPrefetchImgLinkTag(img);
+            head.append(link);
+        });
+        //<link rel="preload" href="/img/header.png" as="image"></link>
+        return data;
+    }
+
+    function createPrefetchImgLinkTag(imgURL){
+        const link = document.createElement("link");
+        link.rel = "preload";
+        link.href = imgURL;
+        link.as = "image";
+        return link;
     }
 
 });
