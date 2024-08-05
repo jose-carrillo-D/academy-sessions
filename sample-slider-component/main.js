@@ -39,10 +39,9 @@ window.addEventListener("load", async () => {
     
     function imgSlidesClickEvent(slide){
         const clicked = slide.getAttribute("data-info");
-        if(!blockClick && prevClick != clicked){
-            //Block click during animation && prevent click on the active slide
-            blockClick = true;
-            prevClick = clicked;
+        if(enabledClick(slide, clicked)){
+            //Block click during animation && prevent click on the active && hidden slides
+            disableClick(clicked);
             //Add fade out animations
             handleFadeOutAnimation(slide);
             //Generate dynamic slides
@@ -54,6 +53,16 @@ window.addEventListener("load", async () => {
             //Display slide data && fadeOut animate text
             setTimeout(() => displaySlideData(slide) , 500);
         }
+    }
+
+    function enabledClick(slide, clicked){
+        const containsHidden = slide.classList.contains("hidden");
+        return !blockClick && prevClick != clicked && !containsHidden;
+    }
+
+    function disableClick(clicked){
+        blockClick = true;
+        prevClick = clicked;
     }
 
     function handleFadeOutAnimation(slide){
